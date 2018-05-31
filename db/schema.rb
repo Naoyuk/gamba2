@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_061532) do
+ActiveRecord::Schema.define(version: 2018_05_31_083338) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,24 @@ ActiveRecord::Schema.define(version: 2018_05_31_061532) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["region_id"], name: "index_crags_on_region_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.date "day"
+    t.string "result"
+    t.text "caption"
+    t.integer "user_id"
+    t.integer "region_id"
+    t.integer "crag_id"
+    t.integer "area_id"
+    t.integer "route_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_posts_on_area_id"
+    t.index ["crag_id"], name: "index_posts_on_crag_id"
+    t.index ["region_id"], name: "index_posts_on_region_id"
+    t.index ["route_id"], name: "index_posts_on_route_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "regions", force: :cascade do |t|
