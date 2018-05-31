@@ -54,6 +54,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  # Use bullet for find out bottleneck n+1 problems
+  # gem 'bullet'
 end
 
 group :test do
