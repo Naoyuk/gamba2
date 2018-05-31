@@ -14,10 +14,21 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Use bootstrap4
+# gem 'bootstrap', '~> 4.1.1'
+
+# Use pageing
+# gem 'kaminari'
+
+# Use private environment variables
+# gem 'dotenv-rails'
+
 # Use ActiveStorage variant
+# gem 'carrierwave', '1.2.2'
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
@@ -43,6 +54,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  # Use bullet for find out bottleneck n+1 problems
+  # gem 'bullet'
 end
 
 group :test do
