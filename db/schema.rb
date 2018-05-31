@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_051658) do
+ActiveRecord::Schema.define(version: 2018_05_31_061532) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,21 @@ ActiveRecord::Schema.define(version: 2018_05_31_051658) do
     t.boolean "able", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
+    t.string "grade"
+    t.integer "type"
+    t.integer "rate"
+    t.integer "region_id"
+    t.integer "crag_id"
+    t.integer "area_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["area_id"], name: "index_routes_on_area_id"
+    t.index ["crag_id"], name: "index_routes_on_crag_id"
+    t.index ["region_id"], name: "index_routes_on_region_id"
   end
 
   create_table "users", force: :cascade do |t|
