@@ -1,7 +1,21 @@
-<nav class="navbar fixed-bottom navbar-dark bg-dark">
-  <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
-  <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
-  <a class="nav-link" href="#"><i class="fas fa-plus-square"></i></a>
-  <a class="nav-link" href="#"><i class="far fa-bell"></i></a>
-  <a class="nav-link" href="#"><i class="far fa-user"></i></a>
+<nav class="navbar fixed-bottom navbar-dark bg-dark justify-content-around">
+  <%= link_to root_path, { class: "nav-link" } do %>
+    <i class="fas fa-home fa-lg"></i>
+  <% end %>
+
+  <%= link_to root_path, { class: "nav-link" } do %>
+    <i class="fas fa-search fa-lg"></i>
+  <% end %>
+
+  <%= link_to root_path, { class: "nav-link" } do %>
+    <i class="fas fa-plus-square fa-lg"></i>
+  <% end %>
+
+  <%= link_to root_path, { class: "nav-link" } do %>
+    <i class="far fa-bell fa-lg"></i>
+  <% end %>
+
+  <%= link_to new_user_path, { class: "nav-link" } do %>
+    <i class="far fa-user fa-lg"></i>
+  <% end %>
 </nav>
