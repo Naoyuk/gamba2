@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+body {
+    padding-top: 4.2rem;
+    padding-bottom: 10.5rem;
+}
+
+.navbar-head {
+    padding-top: 0;
+    padding-bottom: 0;
+}

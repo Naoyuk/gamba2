@@ -1,24 +1,25 @@
-# README
+#Gamba
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+Gamba is a micropost service like Instagram specialized rock climbing.  
+For now, you can choose a route from database only Squamish bouldering.  
+I'm planning to update areas and another type of climbing routes like sport climbing, trad climbing and multi pich climbing.
 
-* Ruby version
+---
 
-* System dependencies
+##This application's features
 
-* Configuration
+* post your picture/movie
+* add a route
+* add your result
+* add a caption
+* follow another user
+* add favorite to another user's posts
+* comment to another user's posts
 
-* Database creation
+##Development Environment
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 2.5.1
+* Use Rspec for tests
+* Need ImageMagick
