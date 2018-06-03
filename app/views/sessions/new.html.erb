@@ -1,0 +1,29 @@
+<div class="jumbotron">
+  <h1 class="display-4">Share your climbing!!</h1>
+  <p class="lead">Post your climbing photos or movies as your records!</p>
+</div>
+
+<div class="row">
+  <div class="col-12 col-md-6 offset-md-3">
+    <h2>Login</h2>
+  <%= form_for(:session, url: login_path, html: {class: 'form-horizontal'}) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :email, "E-mail", class: 'control-label' %>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Password", class: 'control-label' %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>
