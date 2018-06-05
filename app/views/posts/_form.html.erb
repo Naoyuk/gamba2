@@ -1,0 +1,81 @@
+<div class="col-md-12 col-sm-12">
+  <%= form_for @post do |f| %>
+
+    <div class="form-group" id="post_style_box">
+      <%= f.label "Style", class: 'col-12' %>
+      <div class="col-12">
+        <label class="radio-inline col-12 col-md-2">
+          <% params[:style] == '0' ? checked = {checked: true} : checked = nil %>
+          <%= radio_button_tag :style, 0, checked %>Sport
+        </label>
+        <label class="radio-inline col-12 col-md-2">
+          <% params[:style] == '1' ? checked = {checked: true} : checked = nil %>
+          <%= radio_button_tag :style, 1, checked %>Boulder
+        </label>
+        <label class="radio-inline col-12 col-md-2">
+          <% params[:style] == '2' ? checked = {checked: true} : checked = nil %>
+          <%= radio_button_tag :style, 2, checked %>Trad
+        </label>
+        <label class="radio-inline col-12 col-md-2">
+          <% params[:style] == '3' ? checked = {checked: true} : checked = nil %>
+          <%= radio_button_tag :style, 3, checked %>Multi Pitch
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group" id="post_region_box">
+      <%= f.label "Route", class: 'col-1' %>
+      <div class="col-11" id="post_region">
+        <%=
+          f.collection_select :region_id, Region.where(able: true), :id, :name, {}, { class: "form-control col-12 col-md-3" }
+        %>
+      </div>
+    </div>
+
+    <div class="form-group" id="post_crag_box">
+      <%= f.label " ", class: 'col-1' %>
+      <div class="col-11" id="post_crag">
+      </div>
+    </div>
+
+    <div class="form-group" id="post_area_box">
+      <%= f.label " ", class: 'col-1' %>
+      <div class="col-11" id="areas_select">
+      </div>
+    </div>
+
+    <div class="form-group" id="post_route_box">
+      <%= f.label " ", class: 'col-1' %>
+      <div class="col-11" id="routes_select">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Date", class: 'col-1' %>
+      <div class="col-12 col-md-3">
+        <%= f.date_field :day, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Result", class: 'col-1' %>
+      <div class="col-12 col-md-3">
+        <%= f.select :result, ['Flash', 'Send', 'Project'], {include_blank: 'Select result'}, {class: 'form-control'} %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Caption", class: 'col-1' %>
+      <div class="col-11">
+        <%= f.text_area :caption, {class: 'form-control', rows: 6} %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-12 col-md-3">
+        <%= f.submit "Update", class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+
+  <% end %>
+</div>

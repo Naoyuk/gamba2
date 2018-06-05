@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :route do
-    name "MyString"
-    grade ""
-    type 1
+    name "testRoute"
+    grade "V1"
+    style 1
     rate 1
-    region nil
-    crag nil
-    area nil
+    association :region
+    association :crag
+    association :area
   end
 end

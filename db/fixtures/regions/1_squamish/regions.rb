@@ -1,0 +1,12 @@
+require 'csv'
+$i = 1
+Dir.glob("#{Rails.root}/db/fixtures/regions/1_squamish/regions.csv").each do |f|
+  CSV.read(f).each.with_index($i) do |row, i|
+    Region.seed do |s|
+      s.id = i
+      s.name = row[1]
+      s.able = row[2]
+      $i = 1
+    end
+  end
+end

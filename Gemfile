@@ -22,6 +22,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use bootstrap4
 gem 'bootstrap', '~> 4.1.1'
 
+# Import master datas
+gem 'seed-fu'
+
 # Use pageing
 # gem 'kaminari'
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_31_083338) do
+ActiveRecord::Schema.define(version: 2018_06_03_181055) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_05_31_083338) do
   create_table "routes", force: :cascade do |t|
     t.string "name"
     t.string "grade"
-    t.integer "type"
+    t.integer "style"
     t.integer "rate"
     t.integer "region_id"
     t.integer "crag_id"

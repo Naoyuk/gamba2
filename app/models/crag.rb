@@ -1,3 +1,4 @@
-class Rock < ApplicationRecord
+class Crag < ApplicationRecord
   belongs_to :region
+  has_many :areas
 end

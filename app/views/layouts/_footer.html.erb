@@ -1,21 +1,27 @@
 <nav class="navbar fixed-bottom navbar-dark bg-dark justify-content-around">
-  <%= link_to root_path, { class: "nav-link" } do %>
+  <%= link_to root_path, { class: "nav-link", alt: "Home" } do %>
     <i class="fas fa-home fa-lg"></i>
   <% end %>
 
-  <%= link_to root_path, { class: "nav-link" } do %>
+  <%= link_to root_path, { class: "nav-link", alt: "Search" } do %>
     <i class="fas fa-search fa-lg"></i>
   <% end %>
 
-  <%= link_to root_path, { class: "nav-link" } do %>
+  <%= link_to new_post_path, { class: "nav-link", alt: "New Post" } do %>
     <i class="fas fa-plus-square fa-lg"></i>
   <% end %>
 
-  <%= link_to root_path, { class: "nav-link" } do %>
+  <%= link_to root_path, { class: "nav-link", alt: "Alert" } do %>
     <i class="far fa-bell fa-lg"></i>
   <% end %>
 
-  <%= link_to signup_path, { class: "nav-link" } do %>
-    <i class="far fa-user fa-lg"></i>
+  <% if logged_in? %>
+    <%= link_to user_path(current_user), { class: "nav-link", alt: "User" } do %>
+      <i class="far fa-user fa-lg"></i>
+    <% end %>
+  <% else %>
+    <%= link_to login_path, { class: "nav-link", alt: "Log In" } do %>
+      <i class="far fa-user fa-lg"></i>
+    <% end %>
   <% end %>
 </nav>
