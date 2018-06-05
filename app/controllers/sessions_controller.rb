@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # 一時セッションを開始してPost一覧(root_path)へ移動する
       log_in user
-      redirect_to welcome_index_path
+      redirect_to root_path
     else
       flash.now[:danger] = 'Invalid email/password combination.'
       render 'new'

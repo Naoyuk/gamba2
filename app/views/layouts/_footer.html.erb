@@ -16,7 +16,7 @@
   <% end %>
 
   <% if logged_in? %>
-    <%= link_to user_path(current_user), { class: "nav-link", alt: "User" } do %>
+    <%= link_to profile_path, { class: "nav-link", alt: "Profile" } do %>
       <i class="far fa-user fa-lg"></i>
     <% end %>
   <% else %>

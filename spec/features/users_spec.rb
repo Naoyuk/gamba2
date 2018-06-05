@@ -33,4 +33,19 @@ RSpec.feature "Users", type: :feature do
     expect{user.destroy}.to change{Post.count}.by(-1)
   end
 
+  # プロフィールページに表示されるべきコンテンツが表示されていること
+  it "displays login user name, edit profile link, Posts count, Follower count and Following count" do
+    user = FactoryGirl.create(:user)
+    visit root_path
+    visit login_path
+    fill_in "E-mail", with: 'john@example.com'
+    fill_in "Password", with: 'password'
+    click_button 'Login'
+    visit profile_path
+    expect(page).to have_content user.name
+    expect(page).to have_link "Edit Profile"
+    expect(page).to have_content "Posts"
+    expect(page).to have_content "Follower"
+    expect(page).to have_content "Following"
+  end
 end

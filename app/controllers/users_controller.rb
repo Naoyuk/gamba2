@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def profile
+    @user = current_user
+    render 'profile'
+  end
+
   def new
     @user = User.new
   end

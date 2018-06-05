@@ -1,1 +1,22 @@
-<p>post index</p>
+<table class="tabel">
+  <% if @posts.count == 0 %>
+  <tr><td>No posts you can see.</td></tr>
+  <% else %>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.user.name %></td>
+      <td><%= post.day %></td>
+    </tr>
+    <tr><td>Pict</td></tr>
+    <tr>
+      <td>○○ Favs</td>
+      <td>○○ Comments</td>
+    </tr>
+    <tr><td>
+        <form>
+          <input type="text" />
+        </form>
+    </td></tr>
+    <% end %>
+  <% end %>
+</table>
