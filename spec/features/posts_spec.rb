@@ -2,7 +2,20 @@ require 'rails_helper'
 
 RSpec.feature "Posts", type: :feature do
   # ユーザーはログイン後に新しい投稿をポストできる
-  scenario "user after log in posts a new post"
+  scenario "user after log in posts a new post" do
+    region = FactoryGirl.create(:region)
+    crag = FactoryGirl.create(:crag)
+    area = FactoryGirl.create(:area)
+    route = FactoryGirl.create(:route)
+    post = FactoryGirl.create(:post)
+    visit root_path
+    visit login_path
+    fill_in "E-mail", with: 'john@example.com'
+    fill_in "Password", with: 'password'
+    click_button 'Login'
+    visit new_post_path
+    expect(page).to have_content "Style"
+  end
 
   describe "#index" do
     # ユーザーはログインするとポストの一覧が見える
