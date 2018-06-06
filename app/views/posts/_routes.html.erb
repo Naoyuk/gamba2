@@ -1,0 +1,11 @@
+<%=
+  collection_select(
+    :post,
+    :route_id,
+    Route.where(area_id: area_id),
+    :id,
+    :route_name_and_grade,
+    {include_blank: 'Select route'},
+    {class: "form-control col-12 col-md-3"}
+  )
+%>

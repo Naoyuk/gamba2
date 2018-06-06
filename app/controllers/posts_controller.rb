@@ -16,6 +16,24 @@ class PostsController < ApplicationController
     end
   end
 
+  def crags_select
+    if request.xhr?
+      render partial: 'crags', locals: {style: params[:style], region_id: params[:region_id]}
+    end
+  end
+
+  def areas_select
+    if request.xhr?
+      render partial: 'areas', locals: {crag_id: params[:crag_id]}
+    end
+  end
+
+  def routes_select
+    if request.xhr?
+      render partial: 'routes', locals: {area_id: params[:area_id]}
+    end
+  end
+
   private
 
     def post_params

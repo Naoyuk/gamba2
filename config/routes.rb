@@ -13,6 +13,24 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
   resources :users
-  resources :posts
+
+  resources :posts do
+    collection do
+      get :crags_select
+      get :areas_select
+      get :routes_select
+    end
+  end
+
+  resources :regions, only: :index do
+    collection { post :import }
+  end
+
+  resources :routes do
+    collection do
+      get :areas_select
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

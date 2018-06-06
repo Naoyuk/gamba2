@@ -1,0 +1,11 @@
+<%=
+  collection_select(
+    :post,
+    :rock_id,
+    Crag.joins(:areas => :routes).where("routes.style = ? and crags.region_id = ?", style, region_id).uniq,
+    :id,
+    :name,
+    {include_blank: 'Select Crag'},
+    {class: "form-control col-12 col-md-3"}
+  )
+%>

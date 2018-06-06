@@ -1,0 +1,11 @@
+<%=
+  collection_select(
+    :post,
+    :area_id,
+    Area.where(crag_id: crag_id),
+    :id,
+    :name,
+    {include_blank: 'Select Area'},
+    {class: "form-control col-12 col-md-3"}
+  )
+%>
