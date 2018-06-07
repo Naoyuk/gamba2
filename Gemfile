@@ -32,8 +32,8 @@ gem 'seed-fu'
 # gem 'dotenv-rails'
 
 # Use ActiveStorage variant
-# gem 'carrierwave', '1.2.2'
-# gem 'mini_magick', '~> 4.8'
+gem 'carrierwave', '1.2.2'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
