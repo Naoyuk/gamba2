@@ -1,11 +1,11 @@
-<ul class="list-group col-md-6 offset-md-3 posts">
+<ol class="list-group col-md-6 offset-md-3 posts">
 
 <% @posts.each do |post| %>
-    <li class="list-group-item post">
+    <li class="list-group-item post" id="post-<%= post.id %>">
 
       <div class="col-12 post-header clearfix">
         <span class="post-user-name float-left"><%= post.user.name %></span>
-        <span class="post-date"><%= post.day %></span>
+        <span class="post-posted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
         <span class="post-ellips float-right"><i class="fas fa-ellipsis-v"></i></span>
       </div>
 
@@ -18,6 +18,7 @@
       <div class="col-12 post-route-info">
         <%= post.route.name %>
         (<%= post.route.grade %>)
+        <%= post.region.name %><br>
 
         <%
         case post.result
@@ -30,8 +31,8 @@
         end
         %>
 
-        <span class="badge badge-<%= badge %>"><%= post.result %></span><br>
-        <%= post.region.name %>
+        <span class="post-date"><%= post.day %></span>
+        <span class="badge badge-<%= badge %>"><%= post.result %></span>
       </div>
 
       <div class="col-12">
