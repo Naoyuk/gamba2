@@ -1,22 +1,57 @@
-<table class="tabel">
-  <% if @posts.count == 0 %>
-  <tr><td>No posts you can see.</td></tr>
-  <% else %>
-    <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.user.name %></td>
-      <td><%= post.day %></td>
-    </tr>
-    <tr><td>Pict</td></tr>
-    <tr>
-      <td>○○ Favs</td>
-      <td>○○ Comments</td>
-    </tr>
-    <tr><td>
+<ul class="list-group col-md-6 offset-md-3 posts">
+
+<% @posts.each do |post| %>
+    <li class="list-group-item post">
+
+      <div class="col-12 post-header clearfix">
+        <span class="post-user-name float-left"><%= post.user.name %></span>
+        <span class="post-date"><%= post.day %></span>
+        <span class="post-ellips float-right"><i class="fas fa-ellipsis-v"></i></span>
+      </div>
+
+      <div class="col-12 post-pict">
+          <div class="float-left pict">
+            <img src="assets/Squamish3.jpg" />
+          </div>
+      </div>
+
+      <div class="col-12 post-route-info">
+        <%= post.route.name %>
+        (<%= post.route.grade %>)
+
+        <%
+        case post.result
+        when "flash"
+          badge = "primary"
+        when "send"
+          badge = "success"
+        when "project"
+          badge = "secondary"
+        end
+        %>
+
+        <span class="badge badge-<%= badge %>"><%= post.result %></span><br>
+        <%= post.region.name %>
+      </div>
+
+      <div class="col-12">
+        <i class="far fa-star fa-2x"></i>
+      </div>
+
+      <div class="col-12">○○ Favs</div>
+      <div class="col-12">○○ Comments</div>
+
+      <div class="col-12"><%= post.caption %></div>
+
+      <div class="col-12">
         <form>
-          <input type="text" />
-        </form>
-    </td></tr>
-    <% end %>
-  <% end %>
-</table>
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="comment..."></textarea>
+          </div>
+      </div>
+
+    </li>
+
+<% end %>
+
+</ul>
