@@ -1,0 +1,17 @@
+body {
+    margin-top: 64px;
+}
+
+nav {
+    background: $navbarColor !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    a {
+        color: #FFF;
+    }
+
+    a:hover {
+        color: #DDD;
+    }
+}

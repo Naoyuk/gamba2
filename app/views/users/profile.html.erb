@@ -1,18 +1,29 @@
-<div class="row">
-  <%= @user.name %>
-  <%= link_to "Edit Profile", "/" %>
-</div>
+<div class="container">
+  <div class="col-12">
+    <%= @user.name %>
+    <%= link_to "Edit Profile", "/" %>
+  </div>
 
-<div class="row">
-  Posts: <%= @user.posts.count %>
+  <div class="col-12">
+    Posts: <%= @user.posts.count %>
+  </div>
+  <div class="col-12">
+    Follower: ---
+  </div>
+  <div class="col-12">
+    Following: ---
+  </div>
+  <div class="col-12">
+    <%= link_to "Log Out", logout_path, method: :delete %>
+  </div>
+  <hr>
+
+  <div class="row my-picts">
+  <% @user.posts.each_with_index do |post, i| %>
+    <div class="my-pict-<%= i % 3 %> col-4" id="my-pict-<%= post.id %>">
+      <%= image_tag post.picture_url(:resized) %>
+    </div>
+  <% end %>
+  </div>
+
 </div>
-<div class="row">
-  Follower: ---
-</div>
-<div class="row">
-  Following: ---
-</div>
-<div class="row">
-  <%= link_to "Log Out", logout_path, method: :delete %>
-</div>
-<hr>

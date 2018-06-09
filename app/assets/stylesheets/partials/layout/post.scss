@@ -3,13 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .posts {
-    padding: 0!important;
+    padding: 0 !important;
 }
 
 .post {
     margin: 0;
-    padding: 0!important;
-    border: none!important;
+    padding: 0 !important;
+    border: none !important;
 }
 
 .post-header {
@@ -24,13 +24,11 @@
 }
 
 .post-pict {
-    padding: 0!important;
+    padding: 0 !important;
 }
 
-// 実際に写真入れるまでのサンドボックス
 .pict {
     width:100%;
-    background:orange;
     text-align:center;
     overflow: auto;
 }
@@ -43,4 +41,14 @@
 }
 
 .post-action {
+}
+
+#new-post {
+    padding: 0;
+    div {
+        padding: 0;
+        form {
+            padding: 20px 10px 40px 10px;
+        }
+    }
 }
