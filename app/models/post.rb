@@ -13,4 +13,12 @@ class Post < ApplicationRecord
   validates :day, presence: true
   validates :result, presence: true
   validates :caption, presence: true
+
+  mount_uploader :picture,  PictureUploader
+
+  # crop用の仮想attribute
+  attr_accessor :picture_x
+  attr_accessor :picture_y
+  attr_accessor :picture_w
+  attr_accessor :picture_h
 end

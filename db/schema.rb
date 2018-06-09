@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_03_181055) do
+ActiveRecord::Schema.define(version: 2018_06_09_190656) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_06_03_181055) do
     t.integer "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "picture"
     t.index ["area_id"], name: "index_posts_on_area_id"
     t.index ["crag_id"], name: "index_posts_on_crag_id"
     t.index ["region_id"], name: "index_posts_on_region_id"

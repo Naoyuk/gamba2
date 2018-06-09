@@ -7,6 +7,12 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def upload
+    @post = Post.new(post_params)
+    @post.save!
+    # 以下省略(リダイレクトしたりエラー時の処理なんかを書く)
+  end
+
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -37,7 +43,20 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params[:post].permit(:region_id, :crag_id, :area_id, :route_id, :day, :result, :caption)
+      params.require(:post).permit(
+        :region_id,
+        :crag_id,
+        :area_id,
+        :route_id,
+        :day,
+        :result,
+        :caption,
+        :picture,
+        :picture_x,
+        :picture_y,
+        :picture_w,
+        :picture_h,
+      )
     end
 
 end

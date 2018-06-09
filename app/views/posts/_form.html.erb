@@ -24,7 +24,7 @@
 
     <div class="form-group" id="post_region_box">
       <%= f.label "Route", class: 'col-1' %>
-      <div class="col-11" id="post_region">
+      <div class="col-12" id="post_region">
         <%=
           f.collection_select :region_id, Region.where(able: true), :id, :name, {}, { class: "form-control col-12 col-md-3" }
         %>
@@ -33,22 +33,22 @@
 
     <div class="form-group" id="post_crag_box">
       <%= f.label " ", class: 'col-1' %>
-      <div class="col-11" id="post_crag">
+      <div class="col-12" id="post_crag">
         <%= f.collection_select( :crag_id, Crag.all, :id, :name, {include_blank: 'Select crag'}, {class: "form-control col-12 col-md-3"} ) %>
       </div>
     </div>
 
     <div class="form-group" id="post_area_box">
       <%= f.label " ", class: 'col-1' %>
-      <div class="col-11" id="areas_select">
-        <%= render partial: 'areas', locals: {crag_id: @post.crag_id} %>
+      <div class="col-12" id="areas_select">
+        <%= f.collection_select( :area_id, Area.all, :id, :name, {include_blank: 'Select area'}, {class: "form-control col-12 col-md-3"} ) %>
       </div>
     </div>
 
     <div class="form-group" id="post_route_box">
       <%= f.label " ", class: 'col-1' %>
-      <div class="col-11" id="routes_select">
-        <%= render partial: 'routes', locals: {area_id: @post.area_id} %>
+      <div class="col-12" id="routes_select">
+        <%= f.collection_select( :route_id, Route.all, :id, :name, {include_blank: 'Select route'}, {class: "form-control col-12 col-md-3"} ) %>
       </div>
     </div>
 
@@ -68,8 +68,15 @@
 
     <div class="form-group">
       <%= f.label "Caption", class: 'col-1' %>
-      <div class="col-11">
+      <div class="col-12">
         <%= f.text_area :caption, {class: 'form-control', rows: 6} %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label "Image", class: 'col-1' %>
+      <div class="col-12">
+        <%= f.file_field :picture, {class: 'form-control'} %>
       </div>
     </div>
 
