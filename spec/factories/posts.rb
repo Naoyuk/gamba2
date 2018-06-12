@@ -3,6 +3,7 @@ FactoryGirl.define do
     day "2018-05-31"
     result "MyString"
     caption "MyText"
+    picture Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/factories/image.jpg'))
     association :user
     association :region
     association :crag

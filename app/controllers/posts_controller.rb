@@ -7,12 +7,6 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def upload
-    @post = Post.new(post_params)
-    @post.save!
-    # 以下省略(リダイレクトしたりエラー時の処理なんかを書く)
-  end
-
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
@@ -51,11 +45,7 @@ class PostsController < ApplicationController
         :day,
         :result,
         :caption,
-        :picture,
-        :picture_x,
-        :picture_y,
-        :picture_w,
-        :picture_h,
+        :picture
       )
     end
 

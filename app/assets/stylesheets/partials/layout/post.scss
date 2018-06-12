@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .posts {
-    padding: 0 !important;
+    padding: 0 0 70px 0 !important;
 }
 
 .post {
@@ -43,12 +43,12 @@
 .post-action {
 }
 
-#new-post {
+#new_post_box {
     padding: 0;
     div {
         padding: 0;
         form {
-            padding: 20px 10px 40px 10px;
+            padding: 20px 10px 70px 10px;
         }
     }
 }

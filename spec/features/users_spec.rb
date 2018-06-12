@@ -4,7 +4,7 @@ RSpec.feature "Users", type: :feature do
   # ログインしていないユーザーがルートパスを訪れるとログインフォームがある
   scenario "user not logged in vsits root see log in form." do
     visit root_path
-    expect(page).to have_content "Share your climbing!!"
+    expect(page).to have_content "Share your climbing!"
   end
 
   # Sign Upリンクをクリックすると/signupを表示する

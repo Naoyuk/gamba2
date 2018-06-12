@@ -21,7 +21,7 @@
   <div class="row my-picts">
   <% @user.posts.each_with_index do |post, i| %>
     <div class="my-pict-<%= i % 3 %> col-4" id="my-pict-<%= post.id %>">
-      <%= image_tag post.picture_url(:resized) %>
+      <%= image_tag post.picture_url(:thumb) %>
     </div>
   <% end %>
   </div>
