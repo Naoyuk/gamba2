@@ -1,0 +1,11 @@
+<div class="container" id="admin_routes">
+  <table class="table">
+  <% @routes.each do |r| %>
+    <tr>
+      <td><%= r.region.name + " / " + r.crag.name + " / " + r.area.name %></td>
+      <td><%= r.id.to_s %></td>
+      <td><%= r.name + " (" + r.grade + ")" %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>

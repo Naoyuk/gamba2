@@ -1,54 +1,38 @@
 <div class="col-md-12 col-sm-12">
   <%= form_for @post do |f| %>
 
-    <div class="form-group" id="post_style_box">
-      <div class="col-12">
-        <label class="radio-inline col-12 col-md-2">
-          <% params[:style] == '0' ? checked = {checked: true} : checked = nil %>
-          <%= radio_button_tag :style, 0, checked %>Sport
-        </label>
-        <label class="radio-inline col-12 col-md-2">
-          <% params[:style] == '1' ? checked = {checked: true} : checked = nil %>
-          <%= radio_button_tag :style, 1, checked %>Boulder
-        </label>
-        <label class="radio-inline col-12 col-md-2">
-          <% params[:style] == '2' ? checked = {checked: true} : checked = nil %>
-          <%= radio_button_tag :style, 2, checked %>Trad
-        </label>
-        <label class="radio-inline col-12 col-md-2">
-          <% params[:style] == '3' ? checked = {checked: true} : checked = nil %>
-          <%= radio_button_tag :style, 3, checked %>Multi Pitch
-        </label>
-      </div>
-    </div>
-
-    <div class="form-group" id="post_region_box">
+    <div class="form-group" id="route_selecters">
       <%= f.label "Route", class: 'col-1' %>
-      <div class="col-12" id="post_region">
-        <%=
-          f.collection_select :region_id, Region.where(able: true), :id, :name, {}, { class: "form-control col-12 col-md-3" }
+      <div class="col-12">
+        <% region_options = Region.order(:id).where(able: true).map { |r| [r.name, r.id, data: { crags_path: region_crags_path(r) }] } %>
+        <%= f.select :region_id, region_options, { include_blank: true }, class: 'form-control col-12 col-md-3 select-region' %>
+      </div>
+
+      <%= f.label " ", class: 'col-1' %>
+      <div class="col-12">
+        <%
+        crags = @post.region.try(:crags) || []
+        crag_options = crags.map { |c| [c.name, c.id] }
         %>
+        <%= f.select :crag_id, crag_options, { include_blank: true }, class: 'form-control col-12 col-md-3 select-crag' %>
       </div>
-    </div>
 
-    <div class="form-group" id="post_crag_box">
       <%= f.label " ", class: 'col-1' %>
-      <div class="col-12" id="post_crag">
-        <%= f.collection_select( :crag_id, Crag.all, :id, :name, {include_blank: 'Select crag'}, {class: "form-control col-12 col-md-3"} ) %>
+      <div class="col-12">
+        <%
+        areas = @post.crag.try(:areas) || []
+        area_options = areas.map { |a| [a.name, a.id] }
+        %>
+        <%= f.select :area_id, area_options, { include_blank: true }, { class: "form-control col-12 col-md-3 select-area" } %>
       </div>
-    </div>
 
-    <div class="form-group" id="post_area_box">
       <%= f.label " ", class: 'col-1' %>
-      <div class="col-12" id="areas_select">
-        <%= f.collection_select( :area_id, Area.all, :id, :name, {include_blank: 'Select area'}, {class: "form-control col-12 col-md-3"} ) %>
-      </div>
-    </div>
-
-    <div class="form-group" id="post_route_box">
-      <%= f.label " ", class: 'col-1' %>
-      <div class="col-12" id="routes_select">
-        <%= f.collection_select( :route_id, Route.all, :id, :name, {include_blank: 'Select route'}, {class: "form-control col-12 col-md-3"} ) %>
+      <div class="col-12">
+        <%
+        routes = @post.area.try(:routes) || []
+        route_options = routes.map { |r| [r.name, r.id] }
+        %>
+        <%= f.select :route_id, route_options, { include_blank: true }, { class: "form-control col-12 col-md-3 select-route" } %>
       </div>
     </div>
 
@@ -88,9 +72,3 @@
 
   <% end %>
 </div>
-
-<script>
-  $( function() {
-    $( ".datepicker" ).datepicker();
-  } );
-</script>

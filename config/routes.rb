@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'routes/index'
   constraints ->  request { request.session[:user_id].present? } do
     # ログインしてる時のパス
     root to: "posts#index"
@@ -14,23 +15,18 @@ Rails.application.routes.draw do
   get 'profile', to: 'users#profile'
   resources :users
 
-  resources :posts do
-    collection do
-      get :crags_select
-      get :areas_select
-      get :routes_select
-    end
+  resources :posts
+
+  resources :regions, only: [] do
+    resources :crags, only: :index
   end
 
-  resources :regions, only: :index do
-    collection { post :import }
+  resources :crags, only: [] do
+    resources :areas, only: :index
   end
 
-  resources :routes do
-    collection do
-      get :areas_select
-    end
+  resources :areas, only: [] do
+    resources :routes, only: :index
   end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

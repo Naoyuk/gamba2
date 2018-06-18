@@ -1,5 +1,5 @@
 require 'csv'
-$i = 10
+$i = 47
 Dir.glob("#{Rails.root}/db/fixtures/routes/1_squamish/*.csv").each do |f|
   CSV.read(f).each.with_index($i) do |row, i|
     Route.seed do |s|

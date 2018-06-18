@@ -1,8 +1,9 @@
 <%=
   collection_select(
     :post,
-    :rock_id,
-    Crag.joins(:areas => :routes).where("routes.style = ? and crags.region_id = ?", style, region_id).uniq,
+    :crag_id,
+    # Crag.joins(:areas => :routes).where("routes.style = ? and crags.region_id = ?", style, region_id).uniq,
+    Crag.where(region_id: region_id),
     :id,
     :name,
     {include_blank: 'Select Crag'},
