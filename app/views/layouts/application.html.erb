@@ -16,7 +16,7 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    <%= render 'layouts/navigation/header' %>
     <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
@@ -36,6 +36,6 @@
 =end
 %>
 
-    <%= render 'layouts/footer' %>
+    <%= render 'layouts/navigation/footer' %>
   </body>
 </html>
