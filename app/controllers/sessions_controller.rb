@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # 一時セッションを開始してPost一覧(root_path)へ移動する
       log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
       redirect_to root_path
     else
