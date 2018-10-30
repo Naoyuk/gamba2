@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favs/create'
+  get 'favs/destroy'
   get 'routes/index'
   constraints ->  request { request.session[:user_id].present? } do
     # ログインしてる時のパス
@@ -28,5 +30,7 @@ Rails.application.routes.draw do
   resources :areas, only: [] do
     resources :routes, only: :index
   end
+
+  resources :favs, only: [:create, :destroy]
 
 end

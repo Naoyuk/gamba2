@@ -1,0 +1,46 @@
+    <li class="list-group-item post" id="post-<%= post.id %>">
+
+      <div class="col-12 post-header clearfix">
+        <span class="post-user-name float-left"><%= post.user.name %></span>
+        <span class="post-posted">Posted <%= time_ago_in_words(post.created_at) %> ago</span>
+        <span class="post-ellips float-right"><i class="fas fa-ellipsis-v"></i></span>
+      </div>
+
+      <div class="col-12 post-pict">
+          <div class="float-left pict">
+            <%= image_tag post.picture_url(:thumb) %>
+          </div>
+      </div>
+
+      <div class="col-12 post-route-info">
+        <%= post.route.name %>
+        (<%= post.route.grade %>)
+        <%= post.region.name %><br>
+
+        <%
+        case post.result
+        when "Flash"
+          badge = "primary"
+        when "Send"
+          badge = "success"
+        when "Project"
+          badge = "secondary"
+        end
+        %>
+
+        <span class="post-date"><%= post.day %></span>
+        <span class="badge badge-<%= badge %>"><%= post.result %></span>
+      </div>
+
+      <%= render "favs/fav", {post: post, favs: @favs} %>
+
+      <div class="col-12"><%= post.caption %></div>
+
+      <div class="col-12">
+        <form>
+          <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" placeholder="comment..."></textarea>
+          </div>
+      </div>
+
+    </li>

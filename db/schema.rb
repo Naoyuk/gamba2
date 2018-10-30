@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_081727) do
+ActiveRecord::Schema.define(version: 2018_10_04_082714) do
 
   create_table "areas", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 2018_07_30_081727) do
     t.index ["region_id"], name: "index_crags_on_region_id"
   end
 
+  create_table "favs", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_favs_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_favs_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_favs_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.date "day"
     t.string "result"
@@ -42,6 +52,7 @@ ActiveRecord::Schema.define(version: 2018_07_30_081727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
+    t.integer "favs_count"
     t.index ["area_id"], name: "index_posts_on_area_id"
     t.index ["crag_id"], name: "index_posts_on_crag_id"
     t.index ["region_id"], name: "index_posts_on_region_id"
