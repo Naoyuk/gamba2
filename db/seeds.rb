@@ -1,7 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Import regions, crags, areas and routes
+require "csv"
+
+CSV.foreach('db/seeds/csv/region.csv', headers: true) do |row|
+    Region.create(
+        name: row['name'],
+        able: row['able']
+    )
+end
+
+CSV.foreach('db/seeds/csv/crag.csv', headers: true) do |row|
+    Crag.create(
+        name: row['name'],
+        region_id: row['region_id']
+    )
+end
+
+CSV.foreach('db/seeds/csv/area.csv', headers: true) do |row|
+    Area.create(
+        name: row['name'],
+        region_id: row['region_id'],
+        crag_id: row['crag_id']
+    )
+end
+
+CSV.foreach('db/seeds/csv/route.csv', headers: true) do |row|
+    Route.create(
+        rate: row['rate'],
+        name: row['name'],
+        grade: row['grade'],
+        style: row['style'],
+        region_id: row['region_id'],
+        crag_id: row['crag_id'],
+        area_id: row['area_id']
+    )
+end

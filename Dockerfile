@@ -1,8 +1,9 @@
 FROM ruby:2.5.1
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
-WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
+RUN apt-get update -qq && apt-get install -y postgresql-client
+WORKDIR /gamba2
+COPY Gemfile /gamba2/Gemfile
+COPY Gemfile.lock /gamba2/Gemfile.lock
 RUN bundle install
 COPY . /gamba2
 

@@ -16,6 +16,7 @@ gem 'seed-fu'
 gem 'carrierwave', '1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'mini_racer', platforms: :ruby
 
 group :development, :test do
   gem 'sqlite3'

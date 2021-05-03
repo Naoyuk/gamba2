@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2018_10_04_082714) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "areas", force: :cascade do |t|
     t.string "name"
-    t.integer "region_id"
-    t.integer "crag_id"
+    t.bigint "region_id"
+    t.bigint "crag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["crag_id"], name: "index_areas_on_crag_id"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 2018_10_04_082714) do
 
   create_table "crags", force: :cascade do |t|
     t.string "name"
-    t.integer "region_id"
+    t.bigint "region_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["region_id"], name: "index_crags_on_region_id"
@@ -44,11 +47,11 @@ ActiveRecord::Schema.define(version: 2018_10_04_082714) do
     t.date "day"
     t.string "result"
     t.text "caption"
-    t.integer "user_id"
-    t.integer "region_id"
-    t.integer "crag_id"
-    t.integer "area_id"
-    t.integer "route_id"
+    t.bigint "user_id"
+    t.bigint "region_id"
+    t.bigint "crag_id"
+    t.bigint "area_id"
+    t.bigint "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picture"
@@ -72,9 +75,9 @@ ActiveRecord::Schema.define(version: 2018_10_04_082714) do
     t.string "grade"
     t.integer "style"
     t.integer "rate"
-    t.integer "region_id"
-    t.integer "crag_id"
-    t.integer "area_id"
+    t.bigint "region_id"
+    t.bigint "crag_id"
+    t.bigint "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["area_id"], name: "index_routes_on_area_id"
@@ -92,4 +95,15 @@ ActiveRecord::Schema.define(version: 2018_10_04_082714) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "areas", "crags"
+  add_foreign_key "areas", "regions"
+  add_foreign_key "crags", "regions"
+  add_foreign_key "posts", "areas"
+  add_foreign_key "posts", "crags"
+  add_foreign_key "posts", "regions"
+  add_foreign_key "posts", "routes"
+  add_foreign_key "posts", "users"
+  add_foreign_key "routes", "areas"
+  add_foreign_key "routes", "crags"
+  add_foreign_key "routes", "regions"
 end
