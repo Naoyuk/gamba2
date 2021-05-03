@@ -1,4 +1,4 @@
-#Gamba
+# Gamba
 
 ---
 
@@ -8,7 +8,7 @@ I'm planning to update areas and another type of climbing routes like sport clim
 
 ---
 
-##This application's features
+## This application's features
 
 * post your picture/movie
 * add a route
@@ -18,7 +18,20 @@ I'm planning to update areas and another type of climbing routes like sport clim
 * add favorite to another user's posts
 * comment to another user's posts
 
-##Development Environment
+
+## How to setup Gamba2
+
+```
+$ docker-compose build
+$ docker-compose run web rails db:create
+$ docker-compose run web rails db:migrate
+$ docker-compose run web rails db:seed
+$ docker-compose up
+``````
+
+
+
+## Development Environment
 
 * Ruby 2.5.1
 * Use Rspec for tests
